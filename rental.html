@@ -4,13 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    select{
+      box-sizing: border-box;
+    }
+  </style>
   <title>비정기 대관 신청</title>
 </head>
 <body>
-  <h1>hello</h1>
+  <div id = "selectbox"></div>
   <script>
-  
+    const CLUBS = [{name : "Melting Point", president : "김민재"}]
+
+    function makeSelectBox(data){
+      let sel = document.createElement("select");
+
+      data.forEach(function(element){
+        let choose = document.createElement("option");
+        choose.value = element[name];
+        choose.appendChild(document.createTextNode(element[name]));
+
+        sel.appendChild(choose);
+      });
+      return sel;
+    };
+
+    let selectbox = document.querySelector("#selectbox");
+    selectbox.makeSelectBox(CLUBS);
   </script>
 </body>
 </html>
-1,
