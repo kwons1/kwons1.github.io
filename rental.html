@@ -5,32 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    select{
-      box-sizing: border-box;
+    select {
+      box-sizing:border-box;
     }
   </style>
   <title>비정기 대관 신청</title>
 </head>
 <body>
-  <div id = "selectbox"></div>
+  <div id="selectbox"></div>
+  <input type="datetime-local" name="time" min="2023-07-24T17:00">
+  <input type="submit" value="제출">
+  <div id="timeselector"></div>
+  <script src="js/clubselector.js"></script>
+  <script src="js/timeselector.js"></script>
+  <button onclick="send()">신청</button>
+
   <script>
-    const CLUBS = [{name : "Melting Point", president : "김민재"}]
-
-    function makeSelectBox(data){
-      let sel = document.createElement("select");
-
-      data.forEach(function(element){
-        let choose = document.createElement("option");
-        choose.value = element[name];
-        choose.appendChild(document.createTextNode(element[name]));
-
-        sel.appendChild(choose);
-      });
-      return sel;
-    };
-
-    let selectbox = document.querySelector("#selectbox");
-    selectbox.makeSelectBox(CLUBS);
+    function send(){
+      let data = document.getElementById("selectbox").firstChild;
+      let index = document.getElementById("selectbox").firstChild.options.selectedIndex;
+      alert(data[index].value);
+    }
   </script>
 </body>
 </html>
